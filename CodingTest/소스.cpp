@@ -11,6 +11,10 @@ int solution(vector<string> s1, vector<string> s2) {
 	}
     return answer;
 }
+double solution(vector<int> numbers) {
+    double answer = 0;
+    return answer;
+}
 int main()
 {
 
