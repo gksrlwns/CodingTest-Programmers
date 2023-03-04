@@ -3,7 +3,31 @@
 #include <algorithm>
 using namespace std;
 
-//4Á¡
+int solution(int n) {
+    int answer = 0;
+    for (int i = 1; i <= n; i++)
+        for (int j = n; j > 0; j++)
+            if (j * i == n) answer++;
+    return answer;
+}
+
+int solution(vector<int> array, int height) {
+    int answer = 0;
+    for (int i = 0; i < array.size(); i++)
+    {
+        if (array[i] > height)
+            answer++;
+    }
+    return answer;
+}
+//1
+vector<int> solution(int money) {
+    vector<int> answer;
+    answer.push_back(money / 5500);
+    answer.push_back(money % 5500);
+        return answer;
+}
+//4
 string solution(string my_string, int n) {
     string answer = "";
     for (int i = 0; i < my_string.size(); i++)
@@ -69,5 +93,5 @@ double solution(vector<int> numbers) {
 }
 int main()
 {
-
+    cout << solution(20) << ;
 }
