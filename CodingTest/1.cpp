@@ -3,6 +3,15 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
+string solution(string my_string, string letter) {
+    string answer = "";
+    for (int i = 0; i < my_string.size(); i++)
+    {
+        if (my_string[i] == letter[0]) continue;
+        else answer.push_back(my_string[i]);
+    }
+    return answer;
+}
 
 int solution(int n) {
     int answer = 0;
@@ -10,6 +19,25 @@ int solution(int n) {
     {
         if (i * (n / i) == n)
             answer++;
+    }
+    return answer;
+}
+
+vector<int> solution(vector<int> num_list) {
+    vector<int> answer = { 0,0 };
+    for (int i = 0; i < num_list.size(); i++)
+    {
+        if (num_list[i] % 2 == 0)
+            answer[1]++;
+        else
+            answer[0]++;
+    }
+    return answer;
+}
+vector<int> solution(vector<int> num_list) {
+    vector<int> answer(2, 0);
+    for (int num : num_list) {
+        answer[num % 2]++;
     }
     return answer;
 }
