@@ -2,12 +2,88 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <regex>
+#include <cmath>
 using namespace std;
 int solutionAdd(int n);
 int main()
 {
     vector<int> v = { 1,2,3,4,5 };
     //cout << solutionCompare()
+}
+//주사위의개수
+int solutionDice(vector<int> box, int n) {
+    int answer = 1;
+    for (auto a : box)
+        answer *= a / n;
+    return answer;
+}
+
+//세균증식
+int solutionGerm(int n, int t) {
+    for (int i = 1; i <= t; i++)
+        n *= 2;
+    return n;
+}
+
+//문자열정렬
+vector<int> solutionSortString(string my_string) {
+    vector<int> answer;
+    //isdigit사용
+    my_string = regex_replace(my_string, regex("[^0-9]"), "");
+    sort(my_string.begin(),my_string.end());
+    for (auto a : my_string)
+        answer.push_back(a - '0');
+    return answer;
+}
+
+//대문자 소문자
+string solutiontoUpper(string my_string) {
+    string answer = "";
+    for (auto a : my_string)
+        if (a >= 'A' && a <= 'Z')
+            answer.push_back(a + 32);
+        else
+            answer.push_back(a - 32);
+    return answer;
+}
+//암호해독
+string solutionCode(string cipher, int code) {
+    string answer = "";
+    for (int i = code - 1; i < cipher.size(); i += code)
+        answer.push_back(cipher[i]);
+    return answer;
+}
+//가위바위보
+string solutionRSP(string rsp) {
+    string answer = "";
+    for (auto a : rsp) answer.push_back(a == '0' ? '5' : (a == '5' ? '2' : '0'));
+    return answer;
+}
+
+//제곱근
+int solutionPow(int n) {
+    double answer = sqrt(n);
+    return (answer - (int)answer == 0) && answer > 0 ? 1 : 2;
+    /*int answer = 0;
+    for (int i = 0; i < n; i++) {
+        if (i * i == n) return 1;
+    }
+
+    return 2;*/
+}
+
+//문자열 비교2
+int solutionLetter2(string str1, string str2) {
+    regex re(str2);
+    int answer = regex_search(str1, re) ? 1 : 2;
+    //return (str1.find(str2) == string::npos)?2:1;
+    return answer;
+}
+
+//a e i o u 제거
+string solution(string my_string) {
+    return my_string = regex_replace(my_string ,regex("[aeiou]"),"");
 }
 //개미군단
 int solutionAnt(int hp) {
@@ -36,8 +112,11 @@ int solutionAnt(int hp) {
 //스트링 속 자연수
 int solutionNum(string my_string) {
     int answer = 0;
-    
+    my_string = regex_replace(my_string, regex("[1-9]"), "");
+    for (int a : my_string)
+        answer += a-48;
     return answer;
+    //for (const auto v : my_string)if (isdigit(v))answer += v - '0';
 }
 
 //문자여 비교
