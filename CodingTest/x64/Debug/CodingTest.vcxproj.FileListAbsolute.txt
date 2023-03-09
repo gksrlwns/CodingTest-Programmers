@@ -1,1 +1,2 @@
 C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\x64\Debug\CodingTest.exe
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\x64\Debug\CodingTest.exe

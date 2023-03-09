@@ -340,7 +340,7 @@ int solutionMax(vector<int> numbers) {
 //}
 
 //2
-int solution(vector<int> dot) {
+int solution324(vector<int> dot) {
     int answer = 0;
     if (dot[0] * dot[1] > 0)
     {
@@ -376,7 +376,7 @@ string solution(string my_string, string letter) {
     return answer;
 }
 
-int solution(int n) {
+int solution12312(int n) {
     int answer = 0;
     for (int i = 1; i <= n; i++)
     {
