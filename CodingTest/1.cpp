@@ -8,9 +8,116 @@ using namespace std;
 int solutionAdd(int n);
 int main()
 {
-    vector<int> v = { 1,2,3,4,5 };
-    //cout << solutionCompare()
+    //이등변삼각형
+    int n;
+    cin >> n;
+    /*for (int i = 1; i <= n; ++i)
+    {
+        cout << string(i, '*') << endl;
+    }*/
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j <= i; j++)
+            cout << "*";
+        cout << endl;
+    }
+    return 0;
 }
+//외계행성 나이+49
+string solution(int age) {
+    string answer = "";
+    answer = to_string(age);
+    for (auto& a : answer) a += 49;
+    return answer;
+}
+//피자나눠먹기2 3점
+int solutionpizza(int n) {
+    int answer = 0;
+    while (1)
+    {
+        answer++;
+        if ((answer * 6) % n == 0)
+            break;
+    }
+    return answer;
+}
+
+//가장 큰 수
+vector<int> solution(vector<int> array) {
+    vector<int> answer;
+    /*auto t = max_element(array.begin(), array.end());
+    answer.push_back(*t);
+    answer.push_back(distance(array.begin(), t));*/
+    int max = 0;
+    int j = 0;
+    for (int i = 0; i < array.size(); i++)
+    {
+        if (array[i] > max) {
+            max = array[i];
+            j = i;
+        }
+    }
+    answer.push_back(max);
+    answer.push_back(j);
+    return answer;
+}
+
+//배열 회전
+vector<int> solutionDir(vector<int> numbers, string direction) {
+    vector<int> answer;
+    /*if (direction == "left")
+    {
+        rotate(numbers.begin(), numbers.begin() + 1, numbers.end());
+    }
+    else
+    {
+        rotate(numbers.begin(), numbers.end() - 1, numbers.end());
+    }*/
+    if (direction == "right")
+    {
+        answer.push_back(numbers[numbers.size() - 1]);
+        for (int i = 0; i < numbers.size()-1; i++)
+        {
+            answer.push_back(numbers[i]);
+        }
+    }
+    else
+    {
+        for (int i = 1; i < numbers.size(); i++)
+        {
+            answer.push_back(numbers[i]);
+        }
+        answer.push_back(numbers[0]);
+    }
+    return answer;
+}
+
+//인덱스 바꾸기
+string solutionIndex(string my_string, int num1, int num2) {
+    char temp;
+    temp = my_string[num2];
+    my_string[num2] = my_string[num1];
+    my_string[num1] = temp;
+    //swap(my_string[num1], my_string[num2]);
+    return my_string;
+}
+//최댓값2, 6점
+int solutionMax2(vector<int> numbers) {
+    int answer = 0;
+    sort(numbers.begin(), numbers.end());
+    int a = numbers[0] * numbers[1];
+    int b = numbers[numbers.size() - 1] * numbers[numbers.size() - 2];
+    answer = a > b ? a : b;
+    return answer;
+}
+//n의 배수고르기
+vector<int> solution(int n, vector<int> numlist) {
+    vector<int> answer;
+    for (auto a : numlist)
+        if (a % n == 0) answer.push_back(a);
+    return answer;
+}
+
 //주사위의개수
 int solutionDice(vector<int> box, int n) {
     int answer = 1;
@@ -194,7 +301,7 @@ int solutionMax(vector<int> numbers) {
     {
         if (i != j && numbers[i] <= max) max2 = numbers[i];
     }
-    /*sort(numbers.begin(), numbers.end()); \
+    /*sort(numbers.begin(), numbers.end()); 
      answer = numbers[numbers.size() - 2] * numbers[numbers.size() - 1];*/
     
     return max*max2;
