@@ -1,4 +1,4 @@
 ﻿  1.cpp
-C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(263,38): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(283,29): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CodingTest.vcxproj -> C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\x64\Debug\CodingTest.exe
+C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(342,38): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(362,29): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  CodingTest.vcxproj -> C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\x64\Debug\CodingTest.exe

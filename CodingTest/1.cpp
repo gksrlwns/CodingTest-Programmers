@@ -5,23 +5,102 @@
 #include <regex>
 #include <cmath>
 using namespace std;
-int solutionAdd(int n);
+string solutionMos(string letter);
 int main()
 {
-    //이등변삼각형
-    int n;
-    cin >> n;
-    /*for (int i = 1; i <= n; ++i)
+    cout <<solutionMos(".... . .-.. .-.. ---");
+}
+//모스부호
+string solutionMos(string letter) {
+    string answer = "";
+    string letterTemp = "";
+    vector<int> vInt;
+    vector<string> v = { ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.." };
+    for (int i = 0; i < letter.size(); i++) if (letter[i] == ' ') vInt.push_back(i);
+    for (auto a : vInt) cout << a << ",";
+    for (int i = 0; i < vInt.size(); i++)
     {
-        cout << string(i, '*') << endl;
-    }*/
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j <= i; j++)
-            cout << "*";
-        cout << endl;
+        for (int j = 0; j < vInt[i]; j++)
+            letterTemp.push_back(letter[j]);
+        for (int k = 0; k < v.size(); k++)
+        {
+            if (letterTemp == v[k])
+            {
+                answer.push_back(k + 'a');
+                break;
+            }
+        }
+        letterTemp = "";
     }
-    return 0;
+    return answer;
+}
+
+//중복문자제거
+string solutionDuplicate(string my_string) {
+    string answer = "";
+    return answer;
+}
+//합성수찾기 약수 3개 4점
+int solutionDivisor2(int n) {
+    int answer = 0;
+    int a = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        int divisor = 0;
+        for (int j = 1; j <= i; j++)
+        {
+            if (i % j == 0) divisor++;
+            if (divisor >= 3)
+            {
+                answer++;
+                cout << i << ",";
+                break;
+            }
+        }        
+    }
+    return answer;
+}
+//문자열정렬
+string solutionString2(string my_string) {
+    string answer = "";
+    for (auto a : my_string)
+        answer.push_back(tolower(a));
+    sort(answer.begin(),answer.end());
+    return answer;
+}
+//숫자찾기 4점
+int solutionFindNum(int num, int k) {
+    int answer = 0;
+    string a = to_string(num);
+    for (int i = 0; i < a.size(); i++)
+    {
+        cout << a[i]<< " ";
+        if ((a[i]-'0') == k) {
+            answer = i + 1;
+            break;
+        }
+        else answer = -1;
+        cout << answer << endl;
+    }
+    return answer;
+}
+
+//369 8점
+int solution369(int order) {
+    int answer = 0;
+    string a = to_string(order);
+    for (auto a : a) if (a == '3' || a == '6' || a == '9') answer++;
+    return answer;
+}
+//약수
+vector<int> solutionDivisor(int n) {
+    vector<int> answer;
+    for (int i = 1; i <= n; i++)
+    {
+        if (n % i == 0)
+            answer.push_back(i);
+    }
+    return answer;
 }
 //외계행성 나이+49
 string solution(int age) {
