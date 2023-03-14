@@ -1,4 +1,6 @@
 #include<iostream>
+#include<sstream>
+#include<map>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -6,39 +8,85 @@
 #include <cmath>
 using namespace std;
 string solutionMos(string letter);
+string solutionDuplicate(string my_string);
 int main()
 {
-    cout <<solutionMos(".... . .-.. .-.. ---");
+    cout <<solutionDuplicate("peolzzz");
 }
+map<string, char> m = {
+    {".-",'a'},{"-...",'b'},{"-.-.",'c'},{"-..",'d'},
+    {".",'e'},{"..-.",'f'},{"--.",'g'},{"....",'h'},
+    {"..",'i'},{".---",'j'},{"-.-",'k'},{".-..",'l'},
+    {"--",'m'},{"-.",'n'},{"---",'o'},{".--.",'p'},
+    {"--.-",'q'},{".-.",'r'},{"...",'s'},{"-",'t'},
+    {"..-",'u'},{"...-",'v'},{".--",'w'},{"-..-",'x'},
+    {"-.--",'y'},{"--..",'z'}
+};
 //모스부호
 string solutionMos(string letter) {
     string answer = "";
     string letterTemp = "";
-    vector<int> vInt;
     vector<string> v = { ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.." };
-    for (int i = 0; i < letter.size(); i++) if (letter[i] == ' ') vInt.push_back(i);
-    for (auto a : vInt) cout << a << ",";
-    for (int i = 0; i < vInt.size(); i++)
+    /*stringstream ss(letter);
+    string s;
+
+    while (!ss.eof()) {
+        ss >> s;
+        auto t = m.find(s);
+        if (t != m.end()) {
+            answer += t->second;
+        }
+    }
+    return answer;*/
+    for (int i = 0; i < letter.size(); i++)
     {
-        for (int j = 0; j < vInt[i]; j++)
-            letterTemp.push_back(letter[j]);
-        for (int k = 0; k < v.size(); k++)
+        if (letter[i] != ' ')
+            letterTemp.push_back(letter[i]);
+        else
         {
-            if (letterTemp == v[k])
+            for (int j = 0; j < v.size(); j++)
             {
-                answer.push_back(k + 'a');
-                break;
+                if (letterTemp == v[j])
+                {
+                    answer.push_back(j + 'a');
+                    break;
+                }
+            }
+            letterTemp = "";
+        }
+        if (i == letter.size() - 1)
+        {
+            for (int j = 0; j < v.size(); j++)
+            {
+                if (letterTemp == v[j])
+                {
+                    answer.push_back(j + 'a');
+                    break;
+                }
             }
         }
-        letterTemp = "";
-    }
+    } 
     return answer;
 }
 
 //중복문자제거
 string solutionDuplicate(string my_string) {
     string answer = "";
-    return answer;
+    int size = my_string.size();
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i + 1; j < size; j++)
+        {
+            if (my_string[i] == my_string[j])
+                my_string.erase(my_string.begin() + j);
+            cout <<i << ","<<j<<","<< my_string << endl;
+        }
+        answer.push_back(my_string[i]);
+    }
+    return my_string;
+    /*string answer = "";
+    my_string.erase(unique(my_string.begin(), my_string.end()), my_string.end());
+    return my_string;*/
 }
 //합성수찾기 약수 3개 4점
 int solutionDivisor2(int n) {
