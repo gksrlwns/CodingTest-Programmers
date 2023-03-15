@@ -6,13 +6,90 @@
 #include <algorithm>
 #include <regex>
 #include <cmath>
+#include <set>
+
 using namespace std;
-string solutionMos(string letter);
-string solutionDuplicate(string my_string);
+
+int solutionKcount(int i, int j, int k);
 int main()
 {
-    cout <<solutionDuplicate("peolzzz");
+    vector<int> array = { 99, 97, 20, 30 };
+    cout << solutionKcount(1,10,1);
 }
+//k의 개수 5점
+int solutionKcount(int i, int j, int k) {
+    int answer = 0;
+    vector<string> v;
+    vector<char> v2;
+    for (int x = i; x <= j; x++)
+        for (auto a : to_string(x))
+            if (a == k + '0') answer++;
+    return answer;
+}
+
+//가까운 수 10점: 가까운 수가 여러개일 경우 작은 수를 리턴
+int solutionClose(vector<int> array, int n) {
+    int answer = 0;
+    int min = 101;
+    sort(array.begin(), array.end());
+    for (int i = 0; i < array.size(); i++)
+    {
+        if (abs(array[i] - n) < min) {
+            min = abs(array[i] - n);
+            answer = array[i];
+        }
+    }
+    return answer;
+}
+//2차원으로 만들기
+vector<vector<int>> solution2D(vector<int> num_list, int n) {
+    /*int r = num_list.size() / n;
+    vector<vector<int>> answer(r, vector<int>(n));
+
+    int ind = 0;
+    for (int i = 0; i < r; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            answer[i][j] = num_list[ind++];
+        }
+    }*/
+    vector<vector<int>> answer;
+    vector<int> a;
+    for (int i = 0; i < num_list.size(); i++)
+    {
+        a.push_back(num_list[i]);
+        if (i % n == n - 1)
+        {
+            answer.push_back(a);
+            a.clear();
+        }
+    }
+    return answer;
+}
+
+//팩토리얼 5점
+int solutionFactorial(int n) {
+    int factorial = 1;
+    for (int i = 1; i <= 10; i++)
+    {
+        factorial *= i;
+        if (n < factorial && n > factorial / (i - 1))
+            return i - 1;
+        else if (n == factorial)
+            return i;
+    }
+}
+//8점 a로 b
+int solutionAB(string before, string after) {
+    sort(before.begin(), before.end());
+    sort(after.begin(), after.end());
+    if (before.compare(after) == 0)
+        return 1;
+    else
+        return 0;
+}
+
 map<string, char> m = {
     {".-",'a'},{"-...",'b'},{"-.-.",'c'},{"-..",'d'},
     {".",'e'},{"..-.",'f'},{"--.",'g'},{"....",'h'},
@@ -70,20 +147,22 @@ string solutionMos(string letter) {
 }
 
 //중복문자제거
+int is_in(string answer, int size, char ch)
+{
+    for (int i = 0; i < size; i++)
+        if (answer[i] == ch)
+            return 1;
+    return 0;
+}
 string solutionDuplicate(string my_string) {
     string answer = "";
-    int size = my_string.size();
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < my_string.size(); i++)
     {
-        for (int j = i + 1; j < size; j++)
-        {
-            if (my_string[i] == my_string[j])
-                my_string.erase(my_string.begin() + j);
-            cout <<i << ","<<j<<","<< my_string << endl;
-        }
-        answer.push_back(my_string[i]);
+        if (answer.find(my_string[i]) == string::npos)
+            answer += my_string[i];
     }
-    return my_string;
+    return answer;
+    //unique를 사용하려면 sort를 해야함
     /*string answer = "";
     my_string.erase(unique(my_string.begin(), my_string.end()), my_string.end());
     return my_string;*/
