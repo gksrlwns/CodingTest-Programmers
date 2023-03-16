@@ -16,21 +16,41 @@ int main()
     string s = "abcabcadc";
     cout << solutionOnce(s);
 }
+//숨어있는 숫자의 덧셈2
+int solutionNumAdd(string my_string) {
+    int answer = 0;
+    return answer;
+}
+
 //한번만 등장한 문자
 string solutionOnce(string s) {
+    /*string answer = "";
+
+    map<char, int> m;
+    for (const auto v : s)
+    {
+        m[v]++;
+    }
+
+    for (const auto& v : m)
+    {
+        if (v.second == 1)
+        {
+            answer.push_back(v.first);
+        }
+    }
+    return answer;*/
     string answer = "";    
     sort(s.begin(), s.end());
-    
-    for (int i = 0; i < s.size(); i++)
+    int count = 1;
+    for (int i = 0; i < s.size(); i+=count)
     {
-        int count = 0;
+        count = 1;
         for (int j = i+1; j < s.size(); j++)
         {
             if (s[i] == s[j]) count++;
         }
-        if (count != 0)
-            i = count;
-        else
+        if(count == 1)
             answer.push_back(s[i]);
     }
     return answer;
