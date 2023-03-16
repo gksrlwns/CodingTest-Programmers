@@ -10,12 +10,50 @@
 
 using namespace std;
 
-int solutionKcount(int i, int j, int k);
+string solutionOnce(string s);
 int main()
 {
-    vector<int> array = { 99, 97, 20, 30 };
-    cout << solutionKcount(1,10,1);
+    string s = "abcabcadc";
+    cout << solutionOnce(s);
 }
+//한번만 등장한 문자
+string solutionOnce(string s) {
+    string answer = "";    
+    sort(s.begin(), s.end());
+    
+    for (int i = 0; i < s.size(); i++)
+    {
+        int count = 0;
+        for (int j = i+1; j < s.size(); j++)
+        {
+            if (s[i] == s[j]) count++;
+        }
+        if (count != 0)
+            i = count;
+        else
+            answer.push_back(s[i]);
+    }
+    return answer;
+}
+
+//진료순서 정하기
+vector<int> solutionClinic(vector<int> emergency) {
+    /*auto amt = map<int, int>();
+    for (auto& e : emergency) { amt[e]; }
+    auto order = amt.size();
+    for (auto& e : amt) { e.second = order--; }
+    for (auto& e : emergency) { e = amt[e]; }
+    return emergency;*/
+    vector<int> answer;
+    vector<int> temp = emergency;    
+    sort(temp.begin(), temp.end(),greater<int>());
+    for (int i = 0; i < emergency.size(); i++)
+        for(int j = 0; j < temp.size(); j++)
+            if (temp[j] == emergency[i])
+                answer.insert(answer.begin() + i, j + 1);
+    return answer;
+}
+
 //k의 개수 5점
 int solutionKcount(int i, int j, int k) {
     int answer = 0;
