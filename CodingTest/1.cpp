@@ -10,13 +10,92 @@
 
 using namespace std;
 
-int solutionNumAdd(string my_string);
+int solutionThrowball(vector<int> numbers, int k);
 int main()
 {
-    string s = "zzz111";
-    cout <<"답은" << solutionNumAdd(s);
+    vector<int> v = {1,2,3,4,5};
+    /*for (int i = 1; i <= v.size(); i++)
+        v.push_back(i);*/
+    int s1 = 1000;
+    vector<int> answer;
+    cout<< solutionThrowball(v,3);
+    
 }
-//숨어있는 숫자의 덧셈2 오 10점
+
+//컨트롤제트
+int solutionCtrlZ(string s) {
+    int answer = 0;
+    return answer;
+}
+//공 던지기 4점
+int solutionThrowball(vector<int> numbers, int k) {
+    int answer = 0;
+    //x &numbers 값이 0일 경우가 생기기 때문에 안됨
+    //answer =(k*2 -1) % numbers.size(); k에 5 size가 5일 경우 0
+    answer = numbers[((k - 1) * 2) % numbers.size()];
+    
+    return answer;
+}
+
+//7의 개수
+int solutionSevenCount(vector<int> array) {
+    // n%10 == 7로 해결
+    int answer = 0;
+    string str = "";
+    for (auto a : array)
+        str += to_string(a);
+    for (auto a : str)
+        if (a == '7') answer++;
+    return answer;
+}
+
+//소인수분해 9점 틀렸었음
+vector<int> solutionDivisor3(int n) {
+    vector<int> answer;
+    int i = 2;
+    while (n != 1)
+    {
+        if (n % i == 0)
+        {
+            answer.push_back(i);
+            n /= i;
+            i = 2;
+        }
+        else
+            i++;
+    }
+    sort(answer.begin(), answer.end());
+    answer.erase(unique(answer.begin(), answer.end()), answer.end());
+    return answer;
+}
+
+//이진수 더하기 5점 틀린이유 : 둘다 0일 경우를 생각x
+string solutionBinary(string bin1, string bin2) {
+    string answer = "";
+    int num = 0;
+    for (int i = 0; i < bin1.size(); i++)
+    {
+        if (bin1[i] == '1')
+            num += pow(2, bin1.size() - i - 1);
+    }
+    for (int i = 0; i < bin2.size(); i++)
+    {
+        if (bin2[i] == '1')
+            num += pow(2, bin2.size() - i - 1);
+    }
+    if (num == 0) answer.push_back('0');
+    while (num != 0)
+    {
+        if (num % 2 == 1) answer.push_back('1');
+        else answer.push_back('0');
+        num /= 2;
+    }
+    reverse(answer.begin(), answer.end());
+    
+    return answer;
+}
+
+//숨어있는 숫자의 덧셈2 오 10점 틀린이유 : 마지막이 자연수일 경우를 생각x
 int solutionNumAdd(string my_string) {
     /*int answer = 0;
     for (auto& v : my_string)
