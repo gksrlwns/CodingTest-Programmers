@@ -10,21 +10,117 @@
 
 using namespace std;
 
-int solutionThrowball(vector<int> numbers, int k);
+int solutionCtrlZ(string s);
 int main()
 {
     vector<int> v = {1,2,3,4,5};
-    /*for (int i = 1; i <= v.size(); i++)
-        v.push_back(i);*/
-    int s1 = 1000;
-    vector<int> answer;
-    cout<< solutionThrowball(v,3);
+    string s = "onetwothreefourfivesixseveneightnine";
+    cout << solutionCtrlZ(s);
     
+}
+
+long long solution(string numbers) {
+    long long answer = 0;
+    vector<string> v = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+    return answer;
 }
 
 //컨트롤제트
 int solutionCtrlZ(string s) {
     int answer = 0;
+    int count = 0;
+    int x = 0;
+    int n = 0;
+    //스택을 이용해서 Z일 경우 이전의 숫자를 삭제
+    /*stringstream ss;
+    ss.str(s);
+
+    stack<int> st;
+
+    int t = 0;
+    string tmp = "0";
+    while (ss >> tmp)
+    {
+        if (tmp == "Z")
+        {
+            st.pop();
+        }
+        else
+        {
+            t = stoi(tmp);
+            st.push(t);
+        }
+    }
+
+    while (!st.empty())
+    {
+        answer += st.top();
+        st.pop();
+    }*/
+    stringstream ss;
+    for (auto a : s) if (a == 'Z') count++;
+    ss.str(s);
+    cout << "count : " << count << endl;
+    while (count != 0)
+    {
+        while (ss >> x)
+        {
+            //cout << "answer : " << answer << ", " << "x : " << x << endl;
+            cout << "answer : " << answer << ", " << "x : " << x << endl;
+            n = x;
+            cout << endl;
+        }
+        cout << "x : " << n << endl;
+        answer -= n;
+        for (auto& a : s) if (a == 'Z') {
+            a = ' ';
+            break;
+        }
+        ss.clear();
+        ss.str(s);
+        count--;
+        cout << "x 구하기-----------------------------" << endl;
+    }
+    
+    //for (auto& a : s) if (a == 'Z') a = ' ';
+    
+    cout << "합 구하기-----------------------------" << endl;
+    
+    while (ss)
+    {
+        cout << "answer : " << answer << ", " << "n : " << x << endl;
+        answer += x;
+        ss >> x;
+        cout << "answer : " << answer << ", " << "n : " << x << endl;
+        cout << endl;
+    }
+        
+    cout << "string의 합 : " << answer << endl;
+    cout << "x의 합 : " << n << endl;
+    
+    
+    //char형이기에 10이상일 경우 0을 출력함 잘못 만듬
+    //vector<int> v;
+    //for (int i = 0; i < s.size(); i++)
+    //{
+    //    if (s[i] == 'Z') v.push_back(i);
+    //}
+    //
+    //for (int i = 0; i < v.size(); i++)
+    //{
+    //    cout << v[i] << "," << s[v[i] - 2] - '0';
+    //    answer -= s[v[i] - 2]-'0';
+    //    cout << "answer :" << answer << endl;
+    //    //s.erase(s.begin() + v[i]);
+    //}
+    //s.erase(remove_if(s.begin(), s.end(), Zvalue), s.end());
+    //ss.str(s);
+    //cout << endl;
+    //cout << s << endl;
+    //while (ss >> n) {
+    //    cout << n << endl;
+    //    answer += n;
+    //}
     return answer;
 }
 //공 던지기 4점
