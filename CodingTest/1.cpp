@@ -12,16 +12,36 @@ using namespace std;
 
 long long solutionHateEng(string numbers);
 string DeleteString(string s, int index);
+
 int main()
 {
     vector<int> v = {1,2,3,4,5};
     string s = "onefourzerosixseven";
-    //cout << DeleteString(s,3);
-    
     
 }
+
 vector<string> v = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
+vector<string> solutionCutVec(string my_str, int n) {
+    vector<string> answer;
+    string temp = "";
+    int i = 0;
+    if (n == 0)answer.push_back(my_str);
+    for (int i = 0; i < my_str.size(); i++)
+    {
+        temp += my_str[i];
+        if ((i + 1) % n == 0)
+        {
+            answer.push_back(temp);
+            temp = "";
+        }
+        else if (i == (my_str.size() - 1))
+        {
+            answer.push_back(temp);
+        }
+    }
+    return answer;
+}
 class MatchAndIndex {
 public :
     bool isMatch = false;
