@@ -14,7 +14,7 @@ vector<string> solution(string my_str, int n) {
     for (int i = 0; i < my_str.size(); i++)
     {
         temp += my_str[i];
-        if ((i+1)%n == 0)¿ë 
+        if ((i+1)%n == 0)
         {
             answer.push_back(temp);
             temp = "";

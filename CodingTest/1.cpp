@@ -12,12 +12,45 @@ using namespace std;
 
 long long solutionHateEng(string numbers);
 string DeleteString(string s, int index);
+int solutionCalString(string my_string);
 
 int main()
 {
     vector<int> v = {1,2,3,4,5};
-    string s = "onefourzerosixseven";
+    string s = "30 + 4 - 5 - 20";
+    cout << solutionCalString(s);
     
+}
+
+int solutionCalString(string my_string) {
+    int answer = 0;
+    istringstream iss;
+    vector<char> v;
+
+    v.push_back('+');
+
+    for (int i = 0; i < my_string.size(); i++)
+    {
+        if (my_string[i] == '+' || my_string[i] == '-')
+        {
+            v.push_back(my_string[i]);
+            my_string[i] = ' ';
+        }
+    }
+    
+    cout << my_string << endl;
+    iss.str(my_string);
+    int x,i = 0;
+
+    while (iss>>x)
+    {
+        cout << v[i] << endl;
+        cout << x << endl;
+        if (v[i] == '+') answer += x;
+        else answer -= x;
+        i++;
+    }
+    return answer;
 }
 
 vector<string> v = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
