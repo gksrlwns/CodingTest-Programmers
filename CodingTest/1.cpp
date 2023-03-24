@@ -13,13 +13,40 @@ using namespace std;
 long long solutionHateEng(string numbers);
 string DeleteString(string s, int index);
 int solutionCalString(string my_string);
+int solutionBead(int balls, int share);
 
 int main()
 {
     vector<int> v = {1,2,3,4,5};
     string s = "30 + 4 - 5 - 20";
-    cout << solutionCalString(s);
+    cout << solutionBead(30, 11);
     
+}
+//구슬을 나누는 수
+int solutionBead(int balls, int share) {
+    unsigned long long answer = balls;
+    unsigned long long sizeFac = 1;
+    int size = balls - share;
+    int temp = balls;
+    if (size == 0)
+    {
+        return 1;
+    }
+    while (size != 1)
+    {
+        cout << "balls : " << temp << endl;
+        temp--;
+        cout << "answer temp곱 전 : " << answer << endl;
+        answer *= temp;
+        cout << "answer temp곱 후 : " << answer << endl;
+        if (answer % size == 0) answer /= size;
+        else sizeFac *= size;
+        cout << "answer size나누기 후 : " << answer << endl;
+        cout << "size : " << size << endl;
+        size--;
+        cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    }
+    return answer;
 }
 
 int solutionCalString(string my_string) {
