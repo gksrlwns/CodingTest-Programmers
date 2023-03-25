@@ -7,20 +7,59 @@
 #include <regex>
 #include <cmath>
 #include <set>
+#include <numeric>
 
 using namespace std;
 
-long long solutionHateEng(string numbers);
-string DeleteString(string s, int index);
-int solutionCalString(string my_string);
-int solutionBead(int balls, int share);
+int solutionAlien(vector<string> spell, vector<string> dic);
 
 int main()
 {
-    vector<int> v = {1,2,3,4,5};
+    vector<string> v = {"p", "o", "s"};
+    vector<string> v1 = { "sod", "eocd", "qixm", "adio", "soo" };
     string s = "30 + 4 - 5 - 20";
-    cout << solutionBead(30, 11);
+    cout << solutionAlien(v, v1);
     
+}
+vector<int> solution(vector<string> keyinput, vector<int> board) {
+    vector<int> answer;
+    return answer;
+}
+
+//외계어 사전
+int solutionAlien(vector<string> spell, vector<string> dic) {
+    int answer = 0;
+    string v = "";
+    for (auto a : spell)
+        v += a;
+    sort(v.begin(), v.end());
+    for (auto a : dic)
+    {
+        sort(a.begin(), a.end());
+        if (a == v) return 1;
+    }
+    return 2;
+    
+}
+//삼각형의 완성조건2
+int solutionTriangle2(vector<int> sides) {
+    int answer = 0;
+    sort(sides.begin(), sides.end());
+    int sum = accumulate(sides.begin(), sides.end(), 0);
+    for (int i = 1; i <= sum; i++)
+    {
+        if (i < sides[1] && (i + sides[0]) > sides[1])
+        {
+            cout << "i : " << i << endl;
+            answer++;
+        }
+        else if (i >= sides[1] && i < sum)
+        {
+            cout << "i : " << i << endl;
+            answer++;
+        }
+    }
+    return answer;
 }
 //구슬을 나누는 수
 int solutionBead(int balls, int share) {
