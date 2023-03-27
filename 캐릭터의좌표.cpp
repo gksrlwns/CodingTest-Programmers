@@ -15,6 +15,6 @@ vector<int> solution(vector<string> keyinput, vector<int> board) {
 	 if(abs(answer[0]) > board[0]/2 && answer[0] > 0) answer[0] = board[0]/2;
 	 else if(abs(answer[0]) > board[0]/2 && answer[0] < 0) answer[0] = board[0]/2 *-1;
 	 if(abs(answer[1]) > board[1]/2 && answer[1] > 0) answer[1] = board[1]/2;
-	 else ifabs(answer[1]) > board[1]/2 && answer[1] < 0) answer[1] = board[1]/2 *-1;
+	 else if()abs(answer[1]) > board[1]/2 && answer[1] < 0) answer[1] = board[1]/2 *-1;
     return answer;
 }
