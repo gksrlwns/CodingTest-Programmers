@@ -1,6 +1,6 @@
-#include<iostream>
-#include<sstream>
-#include<map>
+#include <iostream>
+#include <sstream>
+#include <map>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -12,28 +12,62 @@
 using namespace std;
 
 int solutionAlien(vector<string> spell, vector<string> dic);
-
+vector<int> solutionCharacter(vector<string> keyinput, vector<int> board);
 int main()
 {
-    vector<string> v = {"p", "o", "s"};
-    vector<string> v1 = { "sod", "eocd", "qixm", "adio", "soo" };
-    string s = "30 + 4 - 5 - 20";
-    cout << solutionAlien(v, v1);
+    vector<string> s = { "left", "right", "up", "right", "right" };
+    vector<int> v = { 11, 11 };
+    vector<int> v1 = solutionCharacter(s, v);
+    for (auto a : v1)
+        cout << a << endl;
     
 }
+int solutionRec(vector<vector<int>> dots) {
+    int answer = 0;
+    vector<int> v(0, 2);
+    for (auto a : dots)
+    {
+        for (int i = 0; i < a.size(); i++) v[i] = a[i];
+        
+    }
+
+    return answer;
+}
+
 vector<int> solutionCharacter(vector<string> keyinput, vector<int> board) {
-    vector<int> answer;
+    vector<int> answer = {0,0};
     for (auto a : keyinput)
     {
-        if (a == "up") answer[1]++;
-        else if (a == "down") answer[1]--;
-        else if (a == "left") answer[0]--;
-        else if (a == "right") answer[0]--;
+        if (a == "up")
+        {
+            if (answer[1] == board[1]/2) continue;
+            answer[1]++;
+        }
+        else if (a == "down")
+        {
+            if (answer[1] == board[1] / 2 * -1) continue;
+            answer[1]--;
+        }
+        else if (a == "left")
+        {
+            if (answer[0] == board[0] / 2 * -1) continue;
+            answer[0]--;
+        }
+        else if (a == "right")
+        {
+            if (answer[0] == board[0] / 2) continue;
+            answer[0]++;
+        }
+        for (auto a : answer)
+            cout << "[" << a << "]";
+        cout << endl;
     }
-    if (abs(answer[0]) > board[0] / 2 && answer[0] > 0) answer[0] = board[0] / 2;
+    /*for (int i = 0; i < answer.size(); i++)
+        cout << answer[i] << endl;*/
+    /*if (abs(answer[0]) > board[0] / 2 && answer[0] > 0) answer[0] = board[0] / 2;
     else if (abs(answer[0]) > board[0] / 2 && answer[0] < 0) answer[0] = board[0] / 2 * -1;
     if (abs(answer[1]) > board[1] / 2 && answer[1] > 0) answer[1] = board[1] / 2;
-    else if (abs(answer[1]) > board[1] / 2 && answer[1] < 0) answer[1] = board[1] / 2 * -1;
+    else if (abs(answer[1]) > board[1] / 2 && answer[1] < 0) answer[1] = board[1] / 2 * -1;*/
     return answer;
 }
 
