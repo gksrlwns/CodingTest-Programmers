@@ -14,16 +14,40 @@ using namespace std;
 int solutionAlien(vector<string> spell, vector<string> dic);
 vector<int> solutionCharacter(vector<string> keyinput, vector<int> board);
 int solutionRec(vector<vector<int>> dots);
+int solutionChicken(int chicken);
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
     vector<int> v = { 11, 11 };
     //vector<int> v1 = solutionCharacter(s, v);
     vector<vector<int>> v2 = { {1, 1} ,{2, 1},{2, 2},{1, 2} };
-    cout << solutionRec(v2);
+    cout << solutionChicken(1999);
 }
-    
-    
+int solutionChicken(int chicken) {
+    int answer = 0;
+    int tmp = 0;
+    while (chicken >= 1) {
+        cout <<"치킨 수(나누기 전) : " << chicken << endl;
+        answer += chicken / 10;
+        tmp += chicken % 10;
+        chicken /= 10;
+        cout << "치킨 수(나누기 후) : " << chicken << endl;
+        cout << "서비스 수 : " << answer << endl;
+        cout << "쿠폰 수 : " << tmp << endl;
+    }
+    return answer + tmp/10;
+}
+
+string solutionLogin(vector<string> id_pw, vector<vector<string>> db) {
+    string answer = "";
+    for (auto a : db)
+    {
+        if (a[0] == id_pw[0] && a[1] == id_pw[1]) return "login";
+        else if (a[0] == id_pw[0]) answer = "wrong pw";
+    }
+    if (answer == "") answer = "fail";
+    return answer;
+}
 
 int solutionRec(vector<vector<int>> dots) {
     int answer = 0;
