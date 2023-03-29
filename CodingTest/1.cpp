@@ -13,25 +13,46 @@ using namespace std;
 
 int solutionAlien(vector<string> spell, vector<string> dic);
 vector<int> solutionCharacter(vector<string> keyinput, vector<int> board);
+int solutionRec(vector<vector<int>> dots);
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
     vector<int> v = { 11, 11 };
-    vector<int> v1 = solutionCharacter(s, v);
-    for (auto a : v1)
-        cout << a << endl;
-    
+    //vector<int> v1 = solutionCharacter(s, v);
+    vector<vector<int>> v2 = { {1, 1} ,{2, 1},{2, 2},{1, 2} };
+    cout << solutionRec(v2);
 }
+    
+    
+
 int solutionRec(vector<vector<int>> dots) {
     int answer = 0;
-    vector<int> v(0, 2);
     for (auto a : dots)
     {
-        for (int i = 0; i < a.size(); i++) v[i] = a[i];
-        
+        for (auto b : a)
+            cout << "[" << b << "]";
+        cout << endl;
     }
-
+    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    sort(dots.begin(), dots.end());
+    for (auto a : dots)
+    {
+        for (auto b : a)
+            cout << "[" << b << "]";
+        cout << endl;
+    }
     return answer;
+    //vector<int> vx;
+    //vector<int> vy;
+    ////x 값이 같으면 서로의 y를 뺀다 / y값이 같으면 서로의 x를 뺀다.
+    //for (auto a : dots)
+    //{
+    //    vx.push_back(a[0]);
+    //    vy.push_back(a[1]);
+    //}
+    //sort(vx.begin(), vx.end());
+    //sort(vy.begin(), vy.end());
+    //return (vx[2]-vx[1])* (vy[2] - vy[1]);
 }
 
 vector<int> solutionCharacter(vector<string> keyinput, vector<int> board) {
