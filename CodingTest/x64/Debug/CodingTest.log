@@ -1,14 +1,15 @@
 ﻿  1.cpp
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(35,27): warning C4267: '=': 'size_t'에서 '_Ty2'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(56,16): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(63,26): warning C4244: '인수': 'float'에서 '_Ty'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
           [
-              _Ty2=int
+              _Ty=int
           ]
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(266,12): warning C4244: 'return': 'unsigned __int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(566,47): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(571,47): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(619,59): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(1130,38): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(1150,29): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\1.cpp(743): warning C4715: 'solutionFactorial': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  CodingTest.vcxproj -> C:\Users\HKJ\Desktop\UnityProject\CodingTest-Programmers-\CodingTest\x64\Debug\CodingTest.exe
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(268,12): warning C4244: 'return': 'unsigned __int64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(568,47): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(573,47): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(621,59): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(1132,38): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(1152,29): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\1.cpp(745): warning C4715: 'solutionFactorial': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  CodingTest.vcxproj -> C:\Program Files\Unity\UnityProject\CodingTest-Programmers\CodingTest\x64\Debug\CodingTest.exe

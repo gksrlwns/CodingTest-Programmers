@@ -16,53 +16,55 @@ int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
     vector<vector<int>> v = { {80, 70} ,{80, 70}, {30, 50},{90, 100},{100, 90},{100, 100},{10, 30} };
-    //solutionRanking(v);
-    vector<int> answer;
-    vector<int> temp;
-    for (auto a : v) answer.push_back((a[0] + a[1]) / 2);
-    cout << "평균 점수 :";
-    for (auto a : answer) cout << a << ",";
-
-    auto amt = map<int, int>();
-    cout << "answer : ";
-    for (auto e : answer) {
-        cout << e << ", ";
-        amt[e];
-    }
-    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
-    auto order = amt.size();
-    for (auto& e : amt) { 
-        e.second = order--;
-        cout << "e.first : " << e.first << endl;
-        cout << "e.second : " << e.second << endl;
-    }
-    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
-    for (auto& e : answer)
-    {
-        cout << "이전 e : " << e << endl;
-        e = amt[e];
-        cout << "이후 e : " << e << endl;
-    }
-    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
-    cout << "순위 : ";
-    for (auto a : answer)
-        cout << a << ", ";
+    vector<vector<int>> v1 = { {1,3} ,{3,1}, {2,3},{3,2},{1,2},{0,0} };
+    vector<int> answer = solutionRanking(v1);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
 }
+
 vector<int> solutionRanking(vector<vector<int>> score) {
     vector<int> answer;
-    vector<int> temp;
-
-    for (auto a : score) answer.push_back((a[0] + a[1]) / 2);
-    cout << "점수 :";
-    for (auto a : answer) cout << a << ",";
-    temp = answer;
-    sort(temp.begin(),temp.end());
-    
-    
+    vector<float> average;
+    for (auto a : score) average.push_back((a[0] + a[1]) / (float)2);
+    cout << "평균 점수 :";
+    for (auto a : average) cout << a << ",";
+    map<float, int, greater<float>> m;
+    cout << "answer : ";
+    for (auto e : average) {
+        cout << e << ", ";
+        m[e]++;
+    }
+    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    int order = 1;
+    int temp;
+    for (auto& e : m) {
+        //e.second = order--;
+        cout << "e.second : " << e.second << endl;
+        temp = e.second;
+        e.second = order;
+        order += temp;
+        cout << "order : " << order << endl;
+        cout << "e.first : " << e.first << endl;
+        cout << "e.second : " << e.second << endl;
+        cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    }
+    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    for (auto& e : average)
+    {
+        cout << "이전 e : " << e << endl;
+        e = m[e];
+        cout << "이후 e : " << e << endl;
+    }
+    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    cout << "순위 : ";
+    for (auto a : average)
+    {
+        answer.push_back(a);
+        cout << a << ", ";
+    }
     return answer;
+    //return answer;
 }
 
 vector<int> Divisor(int a){
