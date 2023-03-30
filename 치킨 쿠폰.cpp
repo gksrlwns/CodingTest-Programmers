@@ -2,18 +2,21 @@
 #include <vector>
 
 using namespace std;
-
+//9점 
 int solution(int chicken) {
     int answer = 0;
-    int tmp = 0;
-    while (chicken >= 1) {
-        cout <<"치킨 수(나누기 전) : " << chicken << endl;
-        answer += chicken / 10;
-        tmp += chicken % 10;
+    int coupon = 0;
+    while (chicken/10 !=0) {
+        cout <<"치킨 수 : " << chicken << endl;
+        cout << "발급되는 쿠폰 수 : " << chicken << endl;
+        coupon = chicken % 10;
+        cout << "남는 쿠폰 수 : " << coupon << endl;
         chicken /= 10;
-        cout << "치킨 수(나누기 후) : " << chicken << endl;
-        cout << "서비스 수 : " << answer << endl;
-        cout << "쿠폰 수 : " << tmp << endl;
+        answer += chicken;
+        cout << "서비스 치킨 수 : " << answer << endl;
+        chicken += coupon;
+        cout << "총 쿠폰의 수 : " << chicken << endl; 
+        cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
     }
-    return answer + tmp/10;
+    return answer;
 }

@@ -11,31 +11,119 @@
 
 using namespace std;
 
-int solutionAlien(vector<string> spell, vector<string> dic);
-vector<int> solutionCharacter(vector<string> keyinput, vector<int> board);
-int solutionRec(vector<vector<int>> dots);
-int solutionChicken(int chicken);
+vector<int> solutionRanking(vector<vector<int>> score);
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
-    vector<int> v = { 11, 11 };
+    vector<vector<int>> v = { {80, 70} ,{80, 70}, {30, 50},{90, 100},{100, 90},{100, 100},{10, 30} };
+    //solutionRanking(v);
+    vector<int> answer;
+    vector<int> temp;
+    for (auto a : v) answer.push_back((a[0] + a[1]) / 2);
+    cout << "평균 점수 :";
+    for (auto a : answer) cout << a << ",";
+
+    auto amt = map<int, int>();
+    cout << "answer : ";
+    for (auto e : answer) {
+        cout << e << ", ";
+        amt[e];
+    }
+    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    auto order = amt.size();
+    for (auto& e : amt) { 
+        e.second = order--;
+        cout << "e.first : " << e.first << endl;
+        cout << "e.second : " << e.second << endl;
+    }
+    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    for (auto& e : answer)
+    {
+        cout << "이전 e : " << e << endl;
+        e = amt[e];
+        cout << "이후 e : " << e << endl;
+    }
+    cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+    cout << "순위 : ";
+    for (auto a : answer)
+        cout << a << ", ";
     //vector<int> v1 = solutionCharacter(s, v);
-    vector<vector<int>> v2 = { {1, 1} ,{2, 1},{2, 2},{1, 2} };
-    cout << solutionChicken(1999);
+    
+    //Divisor(44);
 }
+vector<int> solutionRanking(vector<vector<int>> score) {
+    vector<int> answer;
+    vector<int> temp;
+
+    for (auto a : score) answer.push_back((a[0] + a[1]) / 2);
+    cout << "점수 :";
+    for (auto a : answer) cout << a << ",";
+    temp = answer;
+    sort(temp.begin(),temp.end());
+    
+    
+    return answer;
+}
+
+vector<int> Divisor(int a){
+    vector<int> divisor;
+    int i = 2;
+    while (a >= i)
+    {
+        if (a % i == 0)
+        {
+            divisor.push_back(i);
+            a /= i;
+            i = 2;
+        }
+        else i++;
+    }
+    return divisor;
+}
+
+int solutionsFiniteDecimal(int a, int b) {
+    vector<int> numerator = Divisor(a);
+    vector<int> denominator = Divisor(b);
+    vector<int> answer;
+    cout << " 분자 :";
+    for (auto a : numerator)
+        cout << a << ", ";
+    cout << "제거 전 분모 :";
+    for (auto a : denominator)
+        cout << a << ", ";
+    for (auto a : numerator)
+    {
+        for (int i = 0; i < denominator.size(); i++)
+            if (a == denominator[i])
+            {
+                denominator.erase(denominator.begin() + i);
+                break;
+            }
+    }
+    cout << "제거 후 분모 :";
+    for (auto a : denominator)
+    {
+        if (a != 2 && a != 5) return 2;
+    }
+    return 1;
+}
+
 int solutionChicken(int chicken) {
     int answer = 0;
-    int tmp = 0;
-    while (chicken >= 1) {
-        cout <<"치킨 수(나누기 전) : " << chicken << endl;
-        answer += chicken / 10;
-        tmp += chicken % 10;
+    int coupon = 0;
+    while (chicken/10 !=0) {
+        cout <<"치킨 수 : " << chicken << endl;
+        cout << "발급되는 쿠폰 수 : " << chicken << endl;
+        coupon = chicken % 10;
+        cout << "남는 쿠폰 수 : " << coupon << endl;
         chicken /= 10;
-        cout << "치킨 수(나누기 후) : " << chicken << endl;
-        cout << "서비스 수 : " << answer << endl;
-        cout << "쿠폰 수 : " << tmp << endl;
+        answer += chicken;
+        cout << "서비스 치킨 수 : " << answer << endl;
+        chicken += coupon;
+        cout << "총 쿠폰의 수 : " << chicken << endl; 
+        cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
     }
-    return answer + tmp/10;
+    return answer;
 }
 
 string solutionLogin(vector<string> id_pw, vector<vector<string>> db) {
