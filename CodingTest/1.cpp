@@ -12,15 +12,94 @@
 using namespace std;
 
 vector<int> solutionRanking(vector<vector<int>> score);
+int solutionCurseNum3(int n);
+int dp(int number, int i, int j);
+int CurseNum3Test(int n);
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
     vector<vector<int>> v = { {80, 70} ,{80, 70}, {30, 50},{90, 100},{100, 90},{100, 100},{10, 30} };
     vector<vector<int>> v1 = { {1,3} ,{3,1}, {2,3},{3,2},{1,2},{0,0} };
-    vector<int> answer = solutionRanking(v1);
+    
+    cout << CurseNum3Test(73);
+    //cout << Divisor3(99);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
+}
+bool Divisor3(int n)
+{
+    if (n % 3 == 0) return true;
+    else return false;
+}
+int dp(int number, int i,int j){
+        if (j % 3 == 0 || j % 10 == 3 || j / 10 == 3 || (j/10)%10 == 3) {
+            cout << "number : " << number << ", i : " << i << ", j : " << j << endl;
+            dp(number, i, j + 1);
+        }
+
+        else if (number == i) {
+            cout << "number : " << number << ", i : " << i << ", j : " << j << endl;
+            return j;
+        }
+        else
+        {
+            cout << "number : " << number << ", i : " << i << ", j : " << j << endl;
+            dp(number, i + 1, j + 1);
+        }
+}
+int CurseNum3Test(int n)
+{
+    int answer = 0;
+    answer = dp(n, 1, 1);
+    return answer;
+}
+int solutionCurseNum3(int n) {
+    int answer = 0;
+    int count = 1;
+    while (count != n+1)
+    {
+        answer++;
+        cout << "원래 count : " << count << endl;
+        cout << "원래 answer : " << answer << endl;
+        if ((answer / 10) == 3) {
+            answer += 10;
+            cout << "answer에 3이 들어가면 + 10" << endl;
+            cout << "answer : " << answer << endl;
+        }
+        if (Divisor3(answer))
+        {
+            answer++;
+            cout << "answer이 3의 배수 + 1" << endl;
+            cout << "answer : " << answer << endl;
+        }
+        //if (Divisor3(answer)) answer++;
+        if (answer > 10 && (answer % 10) == 3)
+        {
+            answer++;
+            if (Divisor3(answer)) answer++;
+            cout << "answer에 3이 들어가면 + 1" << endl;
+            cout << "answer : " << answer << endl;
+        }
+        if (Divisor3(answer))
+        {
+            answer++;
+            cout << "answer이 3의 배수 + 1" << endl;
+            cout << "answer : " << answer << endl;
+        }
+        if (((answer / 10) % 10) == 3) {
+            answer += 10;
+            cout << "answer에 3이 들어가면 + 10" << endl;
+            cout << "answer : " << answer << endl;
+        }
+        //if (answer % 3 == 0) answer++;
+
+        
+       // cout << "answer : " << answer << endl;
+        count++;
+        cout << "mmmmmmmmmmmmmmmmmmmmm" << endl;
+    }
+    return answer;
 }
 
 vector<int> solutionRanking(vector<vector<int>> score) {
