@@ -10,23 +10,62 @@
 #include <numeric>
 
 using namespace std;
-
-vector<int> solutionRanking(vector<vector<int>> score);
-int solutionCurseNum3(int n);
-int dp(int number, int i, int j);
-int CurseNum3Test(int n);
+vector<int> solutionUniqueSort(vector<int> numlist, int n);
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
     vector<vector<int>> v = { {80, 70} ,{80, 70}, {30, 50},{90, 100},{100, 90},{100, 100},{10, 30} };
     vector<vector<int>> v1 = { {1,3} ,{3,1}, {2,3},{3,2},{1,2},{0,0} };
+    vector<int> v2 = { 1, 2, 3, 4, 5, 6 };
+    vector<int> v3 = { 1,2};
     
-    cout << CurseNum3Test(73);
+    vector<int> answer = solutionUniqueSort(v3,10000);
+    cout << "[";
+    for (auto a : answer)
+        cout << a << ", ";
+    cout << "]";
     //cout << Divisor3(99);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
 }
+vector<int> solutionAdditionOfFreaction(int numer1, int denom1, int numer2, int denom2) {
+    vector<int> answer;
+    return answer;
+}
+
+vector<int> solutionUniqueSort(vector<int> numlist, int n) {
+    vector<int> answer;
+    sort(numlist.begin(), numlist.end());
+    while (numlist.size() != 0)
+    {
+        int min = numlist[numlist.size()-1];
+        int index = numlist.size() - 1;
+        cout << "[";
+        for (int i = 0; i < numlist.size(); i++)
+        {
+            if (abs(n - numlist[i]) < abs(n - min)) {
+                index = i;
+                min = numlist[i];
+            }
+            else if (abs(n - numlist[i]) == abs(n - min)) {
+                index = numlist[i] > min ? i : index;
+                min = numlist[i] > min ? numlist[i] : min;
+            }
+            //cout << "가장 가까운 값 : " << min << ", 인덱스 : " << index << endl;
+            cout << numlist[i] << ", ";
+        }
+        
+        cout << "]";
+        cout << "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ" << endl;
+        answer.push_back(min);
+        numlist.erase(numlist.begin() + index);
+        //numlist.erase(remove(numlist.begin(), numlist.end(), min), numlist.end());
+    }
+    
+    return answer;
+}
+
 bool Divisor3(int n)
 {
     if (n % 3 == 0) return true;
