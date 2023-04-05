@@ -11,6 +11,8 @@
 
 using namespace std;
 vector<int> solutionUniqueSort(vector<int> numlist, int n);
+vector<int> solutionAdditionOfFreaction(int numer1, int denom1, int numer2, int denom2);
+vector<int> Divisor(int a);
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
@@ -19,18 +21,72 @@ int main()
     vector<int> v2 = { 1, 2, 3, 4, 5, 6 };
     vector<int> v3 = { 1,2};
     
-    vector<int> answer = solutionUniqueSort(v3,10000);
-    cout << "[";
-    for (auto a : answer)
-        cout << a << ", ";
-    cout << "]";
+    vector<int> a = solutionAdditionOfFreaction(9,2,1,3);
+    for (auto i : a)
+        cout << i << endl;
     //cout << Divisor3(99);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
 }
+int MulOfArray(vector<int> v)
+{
+    int x = 1;
+    for (auto a : v)
+        x *= a;
+    return x;
+}
 vector<int> solutionAdditionOfFreaction(int numer1, int denom1, int numer2, int denom2) {
-    vector<int> answer;
+    vector<int> answer,numer,denom;
+    
+    if (denom1 == denom2) numer1 += numer2;
+    else {
+        numer1 = numer1 * denom2 + numer2 * denom1;
+        denom1 *= denom2;
+    }
+    cout << "분자 : " << numer1 << ", 분모 : " << denom1 << endl;
+    numer = Divisor(numer1);
+    denom = Divisor(denom1);
+    cout << "numer1 : [";
+    for (auto a : numer)
+        cout << a << ",";
+    cout << "]" << endl;
+    cout << "denom1 : [";
+    for (auto a : denom)
+        cout << a << ",";
+    cout << "]" << endl;
+    
+    for (int i = 0; i < denom.size();)
+    {
+        bool isEqual = false;
+        
+        for (int j = 0; j < numer.size();)
+        {
+            if (denom[i] == numer[j])
+            {
+                denom.erase(denom.begin() + i);
+                numer.erase(numer.begin() + j);
+                isEqual = true;
+                break;
+            }
+            else
+                j++;
+        }
+        if (!isEqual) i++;
+    }
+
+    cout << "numer1 : [";
+    for (auto a : numer)
+        cout << a << ",";
+    cout << "]" << endl;
+    cout << "denom1 : [";
+    for (auto a : denom)
+        cout << a << ",";
+    cout << "]" << endl;
+    
+    answer.push_back(MulOfArray(numer));
+    answer.push_back(MulOfArray(denom));
+
     return answer;
 }
 
