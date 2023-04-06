@@ -13,6 +13,8 @@ using namespace std;
 vector<int> solutionUniqueSort(vector<int> numlist, int n);
 vector<int> solutionAdditionOfFreaction(int numer1, int denom1, int numer2, int denom2);
 vector<int> Divisor(int a);
+int solutionStringPush(string A, string B);
+string solutionPolynomial(string polynomial);
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
@@ -21,14 +23,78 @@ int main()
     vector<int> v2 = { 1, 2, 3, 4, 5, 6 };
     vector<int> v3 = { 1,2};
     
-    vector<int> a = solutionAdditionOfFreaction(9,2,1,3);
-    for (auto i : a)
-        cout << i << endl;
+    cout << solutionPolynomial("x + 2x");
+    
     //cout << Divisor3(99);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
 }
+string solutionPolynomial(string polynomial) {
+    string answer = "";
+    int a = 0;
+    int b = 0;
+    int temp;
+    char x;
+    cout << "polynomial : " << polynomial << endl;
+    remove(polynomial.begin(), polynomial.end(), '+');
+    cout << "polynomial : " << polynomial << endl;
+    /*stringstream ss;
+    ss.str(polynomial);
+    while (ss)
+    {
+        ss >> temp;
+        ss >> x;
+        
+        if (x == 'x')
+        {
+            if (temp == 0) a++;
+            else a += temp;
+        }
+        else
+            b += temp;
+        cout << "a : " << a << ", x : " << x << ", b : " << b << endl;
+    }*/
+    return answer;
+}
+
+int solutionStringPush(string A, string B) {
+    int answer = 0;
+    char temp;
+    if (A == B) return 0;
+    for (int i = 0; i < A.size() - 1; i++)
+    {
+        answer++;
+        temp = A[A.size()-1];
+        A.erase(A.begin()+ A.size() - 1);
+        A.insert(A.begin(), temp);
+        for (auto a : A)
+            cout << a;
+        cout << endl;
+        if (A == B) return answer;
+    }
+    return -1;
+}
+int solutionMaxFrequency(vector<int> array) {
+    int answer = 0;
+    map<int, int> m;
+    for (auto& a : array) m[a]++;
+    int max = 0;
+    for (auto& a : m)
+    {
+        if (a.second > max)
+        {
+            max = a.second;
+            answer = a.first;
+        }
+        else if (a.second == max)
+        {
+            answer = -1;
+        }
+    }
+    return answer;
+}
+
 int MulOfArray(vector<int> v)
 {
     int x = 1;
