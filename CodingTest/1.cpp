@@ -15,6 +15,9 @@ vector<int> solutionAdditionOfFreaction(int numer1, int denom1, int numer2, int 
 vector<int> Divisor(int a);
 int solutionStringPush(string A, string B);
 string solutionPolynomial(string polynomial);
+string OX(string quiz);
+vector<string> solutionOXquiz(vector<string> quiz);
+
 int main()
 {
     vector<string> s = { "left", "right", "up", "right", "right" };
@@ -22,39 +25,82 @@ int main()
     vector<vector<int>> v1 = { {1,3} ,{3,1}, {2,3},{3,2},{1,2},{0,0} };
     vector<int> v2 = { 1, 2, 3, 4, 5, 6 };
     vector<int> v3 = { 1,2};
-    
-    cout << solutionPolynomial("x + 2x");
+    vector<string> s1 = { "19 - 6 = 13", "5 + 66 = 71", "5 - 15 = 63", "3 - 1 = 2" };
+    vector<string> answer =solutionOXquiz(s1);
+    for (auto a : answer)
+        cout << a << endl;
     
     //cout << Divisor3(99);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
 }
+int solution(vector<int> common) {
+    int answer = 0;
+    int i = 0;
+    while (i != common.size()+1)
+    {
+        common[i + 1] - common[i];
+        i++;
+    }
+    return answer;
+}
+string OX(string quiz)
+{
+    int x, y, z;
+    char cal,t;
+    
+    istringstream iss(quiz);
+    while (iss)
+    {
+        iss >> x;
+        iss >> cal;
+        iss >> y;
+        iss >> t;
+        iss >> z;
+        cout << x << cal << y << t << z;
+        if (cal == '+')  return x + y == z ? "O" : "X";
+        else return x - y == z ? "O" : "X";
+    }
+}
+vector<string> solutionOXquiz(vector<string> quiz) {
+    vector<string> answer;
+    for (auto a : quiz)
+    {
+        answer.push_back(OX(a));
+    }
+    return answer;
+}
 string solutionPolynomial(string polynomial) {
     string answer = "";
     int a = 0;
     int b = 0;
     int temp;
-    char x;
+    string x;
     cout << "polynomial : " << polynomial << endl;
-    remove(polynomial.begin(), polynomial.end(), '+');
-    cout << "polynomial : " << polynomial << endl;
-    /*stringstream ss;
+    
+    stringstream ss;
     ss.str(polynomial);
-    while (ss)
+    while (ss >> x)
     {
-        ss >> temp;
-        ss >> x;
-        
-        if (x == 'x')
-        {
-            if (temp == 0) a++;
-            else a += temp;
-        }
-        else
-            b += temp;
-        cout << "a : " << a << ", x : " << x << ", b : " << b << endl;
-    }*/
+        stringstream sstemp(x);
+        if (x == "x") a++;
+        else if (x.find('x') != -1) while (sstemp >> temp) a += temp;
+        else while (sstemp >> temp) b += temp;
+        cout << "x : " << x << endl;
+    }
+    cout << "a : " << a << ", b : " << b << endl;
+    if (a == 0) answer += to_string(b);
+    else if (a > 1)
+    {
+        if (b >= 1) answer = to_string(a) + "x + " + to_string(b);
+        else answer = to_string(a) + "x";
+    }
+    else
+    {
+        if (b >= 1) answer = "x + " + to_string(b);
+        else answer = "x";
+    }
     return answer;
 }
 
@@ -1152,7 +1198,7 @@ int solutionpizza(int n) {
 }
 
 //가장 큰 수
-vector<int> solution(vector<int> array) {
+vector<int> solutionqweqwe(vector<int> array) {
     vector<int> answer;
     /*auto t = max_element(array.begin(), array.end());
     answer.push_back(*t);

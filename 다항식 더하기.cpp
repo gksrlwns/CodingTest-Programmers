@@ -1,56 +1,54 @@
 #include <string>
 #include <vector>
+#include <sstream>
 
 using namespace std;
-
+//11점이다! 
 string solution(string polynomial) {
     string answer = "";
-    int x = 0;
-    int y = 0;
-    while (polynomial.find('x') != -1)
+    int a = 0;
+    int b = 0;
+    int temp;
+    string x;
+    stringstream ss;
+    ss.str(polynomial);
+    while (ss >> x)
     {
-        int index = polynomial.find('x');
-        if (index == 0)
-        {
-            x++;
-            polynomial.erase(polynomial.begin());
-        }
-        else if (polynomial[index - 1] == ' ')
-        {
-            x++;
-            polynomial.erase(index - 1, index + 1);
-        }
-        else
-        {
-            x += polynomial[index - 1] - '0';
-            polynomial.erase(index - 1, index + 1);
-        }
+        stringstream sstemp(x);
+        if (x == "x") a++;
+        else if (x.find('x') != -1) while (sstemp >> temp) a += temp;
+        else while (sstemp >> temp) b += temp;
     }
-    
-    
-    for (auto& a : polynomial)
+    if (a == 0) answer += to_string(b);
+    else if (a > 1)
     {
-        if (isdigit(a)) y += a - '0';
-        
+        if (b >= 1) answer = to_string(a) + "x + " + to_string(b);
+        else answer = to_string(a) + "x";
     }
-    if (x == 1)
+    else
     {
-        answer += "x";
+        if (b >= 1) answer = "x + " + to_string(b);
+        else answer = "x";
     }
-    else if (x > 1)
-    {
-        answer += x+'0';
-        answer += "x";
-    }
-    if (x == 0 && y >= 1)
-    {
-        answer += y + '0';
-    }
-    else if (y != 0)
-    {
-        answer += " + ";
-        answer += y + '0';
-    }
-    
     return answer;
 }
+/*
+비슷한 형식 sstream을 사용하는 방법이 달랐음 
+stringstream ss(p);
+    string temp;
+    int xsum = 0, nsum = 0;
+    while (getline(ss, temp, ' ')) {
+        if (temp.back() == 'x') {
+            if (temp.size() == 1) xsum++;
+            else xsum += stoi(string(temp.begin(), temp.end() - 1));
+        }
+        else if(temp!="+") nsum += stoi(temp);
+    }
+    if (xsum == 0) return to_string(nsum);
+    else {
+        string xres;
+        if (xsum == 1) xres = "x";
+        else xres = to_string(xsum) + "x";
+        if (nsum == 0) return xres;
+        else return xres + " + " + to_string(nsum);
+    }
