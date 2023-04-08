@@ -17,6 +17,7 @@ int solutionStringPush(string A, string B);
 string solutionPolynomial(string polynomial);
 string OX(string quiz);
 vector<string> solutionOXquiz(vector<string> quiz);
+int solutionProgression(vector<int> common);
 
 int main()
 {
@@ -26,24 +27,23 @@ int main()
     vector<int> v2 = { 1, 2, 3, 4, 5, 6 };
     vector<int> v3 = { 1,2};
     vector<string> s1 = { "19 - 6 = 13", "5 + 66 = 71", "5 - 15 = 63", "3 - 1 = 2" };
-    vector<string> answer =solutionOXquiz(s1);
-    for (auto a : answer)
-        cout << a << endl;
+    cout << solutionProgression({2, 4, 8});
     
     //cout << Divisor3(99);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
 }
-int solution(vector<int> common) {
-    int answer = 0;
-    int i = 0;
-    while (i != common.size()+1)
+int solutionProgression(vector<int> common) {
+    int temp = common[1] - common[0];
+    if (temp == common[common.size() - 1] - common[common.size() - 2])
     {
-        common[i + 1] - common[i];
-        i++;
+        return common[common.size() - 1] + temp;
     }
-    return answer;
+    else
+    {
+        return common[common.size() - 1] * common[1] / common[0];
+    }
 }
 string OX(string quiz)
 {
