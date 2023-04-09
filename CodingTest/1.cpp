@@ -10,14 +10,8 @@
 #include <numeric>
 
 using namespace std;
-vector<int> solutionUniqueSort(vector<int> numlist, int n);
-vector<int> solutionAdditionOfFreaction(int numer1, int denom1, int numer2, int denom2);
 vector<int> Divisor(int a);
-int solutionStringPush(string A, string B);
-string solutionPolynomial(string polynomial);
-string OX(string quiz);
-vector<string> solutionOXquiz(vector<string> quiz);
-int solutionProgression(vector<int> common);
+int solutionSafeZone(vector<vector<int>> board);
 
 int main()
 {
@@ -27,13 +21,29 @@ int main()
     vector<int> v2 = { 1, 2, 3, 4, 5, 6 };
     vector<int> v3 = { 1,2};
     vector<string> s1 = { "19 - 6 = 13", "5 + 66 = 71", "5 - 15 = 63", "3 - 1 = 2" };
-    cout << solutionProgression({2, 4, 8});
+    vector<vector<int>> vvi = { {0, 0, 0, 0, 0},{0, 0, 0, 0, 0},{0, 0, 0, 0, 0},{0, 0, 1, 0, 0},{0, 0, 0, 0, 0} };
+    solutionSafeZone(vvi);
     
     //cout << Divisor3(99);
     //vector<int> v1 = solutionCharacter(s, v);
     
     //Divisor(44);
 }
+int solutionSafeZone(vector<vector<int>> board) {
+    int answer = 0;
+    for (int i = 0; i < board.size(); i++)
+    {
+        for (int j = 0; j < board[i].size(); j++)
+        {
+            if (board[i][j] == 1)
+            {
+                cout << "i = " << i << ", j = " << j << endl;
+            }
+        }
+    }
+    return answer;
+}
+
 int solutionProgression(vector<int> common) {
     int temp = common[1] - common[0];
     if (temp == common[common.size() - 1] - common[common.size() - 2])
