@@ -12,7 +12,6 @@
 using namespace std;
 vector<int> Divisor(int a);
 int solutionSafeZone(vector<vector<int>> board);
-int solutionCheckTest(string s);
 
 int main()
 {
@@ -23,7 +22,7 @@ int main()
     vector<int> v3 = { 1,2};
     vector<string> s1 = { "19 - 6 = 13", "5 + 66 = 71", "5 - 15 = 63", "3 - 1 = 2" };
     vector<vector<int>> vvi = { {0, 0, 0, 0, 0},{0, 0, 0, 0, 0},{0, 0, 0, 0, 0},{0, 0, 1, 1, 0},{0, 0, 0, 0, 0} };
-    cout << solutionCheckTest("one4seveneight");
+    
     
     
     //cout << Divisor3(99);
@@ -31,36 +30,7 @@ int main()
     
     //Divisor(44);
 }
-int solutionCheckTest2(int n, int m, vector<int> section) {
-    int answer = 1;
-    int init = section[0];
-    for (int i = 1; i < section.size(); i++)
-    {
-        if (section[i] <= init + m - 1) continue;
-        else
-        {
-            init = section[i];
-            answer++;
-        }
-    }
-    return answer;
-}
 
-int solutionCheckTest(string s) {
-    int answer = 0;
-    vector<string> word = {
-        "zero", "one", "two", "three", "four", "five",
-        "six", "seven", "eight", "nine"
-    };
-    int temp;
-
-    for (int i = 0; i < word.size(); i++)
-    {
-        while ( (temp = s.find(word[i])) != -1) s.replace(temp, word[i].size(), to_string(i));
-    }
-    answer = stoi(s);
-    return answer;
-}
 int solutionSafeZone(vector<vector<int>> board) {
     int answer = 0;
     vector<vector<int>> x;
